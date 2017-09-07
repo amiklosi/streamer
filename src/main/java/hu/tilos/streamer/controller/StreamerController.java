@@ -110,7 +110,7 @@ public class StreamerController {
       return null;
     } catch (IOException e) {
       LOG.error("error saving the file to cache" + e);
-      InputStream inputStream = (request.getRequestURI().contains("download")) ? combinedInputStream : throttledCombinedInputStream;
+      InputStream inputStream = (request.getRequestURI().contains("download")) ? throttledCombinedInputStream : combinedInputStream;
       return HttpRange.toResourceRegions(httpRanges, new InputStreamResource(inputStream) {
         @Override
         public long contentLength() throws IOException {
